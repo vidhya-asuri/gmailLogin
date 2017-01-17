@@ -19,7 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class gmailLoginTest {
 
   @Test
-  public void invalidLogin() {
+  public void invalidPassword() {
 	  File file = new File("C:/Users/asuriv/SQS-Training/SeleniumTraining/chromedriver/chromedriver.exe");
 	  System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 
@@ -56,12 +56,34 @@ public class gmailLoginTest {
 //      WebElement errorMessage = driver.findElement(By.xpath("//*[@id=\"errormsg_0_Passwd\"]"));
       
     WebElement errorMessage = driver.findElement(By.id("errormsg_0_Passwd"));
-      
-      
-      
+  }
+  
+  @Test
+  public void invalidEmail() {
+	  File file = new File("C:/Users/asuriv/SQS-Training/SeleniumTraining/chromedriver/chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 
+      // Create the Chrome driver object.
+      WebDriver driver = new ChromeDriver();
+      driver.get("http://mail.google.com");
+      // delete cookies (& clear cache?)
+      driver.manage().deleteAllCookies();
+      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+      // get the email input text box.
+      WebElement emailInput = driver.findElement(By.id("Email"));
+      emailInput.sendKeys("vid.auto@#$@#.test@gmail.com"); // enter email.
+      
+      // grab the next button by ID
+      WebElement nextButton = driver.findElement(By.id("next"));
+      // http://toolsqa.com/selenium-webdriver/findelement-and-findelements-command/
+      //driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+      nextButton.click();
+      
+      // Now expect an error message "Please enter a valid email address." to be displayed.
+      WebElement errorMessage = driver.findElement(By.id("errormsg_0_Email")); 
 
-	  
+      System.out.println("Error message " +errorMessage.getText());
+      
   }
 	
   @Test
