@@ -17,6 +17,53 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class gmailLoginTest {
+
+  @Test
+  public void invalidLogin() {
+	  File file = new File("C:/Users/asuriv/SQS-Training/SeleniumTraining/chromedriver/chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+
+      // Create the Chrome driver object.
+      WebDriver driver = new ChromeDriver();
+      driver.get("http://mail.google.com");
+      // delete cookies (& clear cache?)
+      driver.manage().deleteAllCookies();
+      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+      // get the email input text box.
+      WebElement emailInput = driver.findElement(By.id("Email"));
+      emailInput.sendKeys("vid.auto.test@gmail.com"); // enter email.
+      
+      // grab the next button by ID
+      WebElement nextButton = driver.findElement(By.id("next"));
+      // http://toolsqa.com/selenium-webdriver/findelement-and-findelements-command/
+      driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+      nextButton.click();
+      driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+      WebElement passwordInput = driver.findElement(By.id("Passwd")); // #Passwd password-shown
+      passwordInput.sendKeys("piOctI$*"); // enter incorrect password.
+
+      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+      
+      // grab the next button by ID
+      WebElement signInBtn = driver.findElement(By.id("signIn"));
+      driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+      // http://toolsqa.com/selenium-webdriver/findelement-and-findelements-command/
+      signInBtn.click();
+      //driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+      
+      // verify there is an error message since an incorrect password was entered.
+      // xpath for the error message span element. //*[@id="errormsg_0_Passwd"]
+//      WebElement errorMessage = driver.findElement(By.xpath("//*[@id=\"errormsg_0_Passwd\"]"));
+      
+    WebElement errorMessage = driver.findElement(By.id("errormsg_0_Passwd"));
+      
+      
+      
+
+
+	  
+  }
+	
   @Test
   public void f() {
 	  File file = new File("C:/Users/asuriv/SQS-Training/SeleniumTraining/chromedriver/chromedriver.exe");

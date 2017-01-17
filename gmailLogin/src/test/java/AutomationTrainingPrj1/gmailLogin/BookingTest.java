@@ -51,11 +51,13 @@ public class BookingTest {
       
       driver.manage().timeouts().implicitlyWait(1, TimeUnit.MINUTES);// give it 1 minute to finish loading results page.
       // get number of elements with class - prod-item. This is the number of resuts.
-      
       WebElement results = driver.findElement(By.className("prod-item"));
       
 	  // XPath for the close (x) button on the pop-over. //*[@id="newsletter-box"]/div 
+      //*[@id="content-wrapper"]/main/div[3]/div[2]/div[2]/div[1]/a
+      //*[@id="content-wrapper"]/main/div[3]/div[2]/div[2]/div[2]/a
       
+     // xpath = //*[@id="content-wrapper"]/main/div[3]/div[2]/div[2]/div[2]/a
       
   }
   @BeforeMethod
