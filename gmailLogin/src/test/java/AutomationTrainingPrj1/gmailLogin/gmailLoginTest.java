@@ -38,9 +38,19 @@ public class gmailLoginTest {
 
   @Test
   public void invalidPassword() {
+	  /*
+	   * This test fails due to the following issue - as soon as the signin button is clicked
+	   * the previous page where the email is entered gets loaded. i.e. as soon as the signin button is clicked,
+	   * the previous page is loaded instead of either staying in the same page.
+	   * The expected result is that it should stay in the same page; in that case the span with the error message 
+	   * would be accessible.
+	   * But since we get kicked back to the previous page as soon as the signin button is clicked, 
+	   * the span with the error message becomes inaccessible and so this test fails.
+	   * 
+	   * 
+	   */
 	  File file = new File("C:/Users/asuriv/SQS-Training/SeleniumTraining/chromedriver/chromedriver.exe");
 	  System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-
       // Create the Chrome driver object.
       WebDriver driver = new ChromeDriver();
       driver.get("http://mail.google.com");
@@ -54,32 +64,21 @@ public class gmailLoginTest {
       driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
       // grab the next button by ID
       WebElement nextButton = driver.findElement(By.id("next"));
-
       nextButton.click();
       driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
       WebElement passwordInput = driver.findElement(By.id("Passwd")); // #Passwd password-shown
       passwordInput.sendKeys("piOctI$*"); // enter incorrect password.
-
       driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-      
       // grab the sign-in button by ID
       WebElement signInBtn = driver.findElement(By.id("signIn"));
       driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
       // http://toolsqa.com/selenium-webdriver/findelement-and-findelements-command/
       signInBtn.click();
-      //driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-      
       // verify there is an error message since an incorrect password was entered.
       // xpath for the error message span element. //*[@id="errormsg_0_Passwd"]
       WebDriverWait wait = new WebDriverWait(driver, 10);
       WebElement errorAlert = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@id='errormsg_0_Passwd']")));
-
-      
-      //WebElement errorMessage = driver.findElement(By.xpath("//span[@id='errormsg_0_Passwd']"));
-      
-      
       System.out.println(errorAlert.getText());
-//      WebElement errorMessage = driver.findElement(By.id("errormsg_0_Passwd"));
       driver.close();
       driver.quit();
   }
