@@ -49,7 +49,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
-                    <span>C:\Users\asuriv.SQS\AppData\Local\Temp\testng-eclipse-375100204\testng-customsuite.xml</span>
+                    <span>C:\Users\asuriv.SQS\AppData\Local\Temp\testng-eclipse--657763193\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -102,7 +102,7 @@
                     <div class="method-list-content passed suite-Default_suite">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="AutomationTrainingPrj1.gmailLogin.BookingTest" hash-for-method="testSearch">testSearch</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="AutomationTrainingPrj1.gmailLogin.gmailLoginTest" hash-for-method="invalidEmailExcel">invalidEmailExcel</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Default_suite -->
@@ -120,14 +120,14 @@
           <div class="suite-Default_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">AutomationTrainingPrj1.gmailLogin.BookingTest</span>
+              <span class="class-name">AutomationTrainingPrj1.gmailLogin.gmailLoginTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="testSearch">
-                  </a> <!-- testSearch -->
-                  <span class="method-name">testSearch</span>
+                  <a name="invalidEmailExcel">
+                  </a> <!-- invalidEmailExcel -->
+                  <span class="method-name">invalidEmailExcel</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -135,7 +135,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\asuriv.SQS\AppData\Local\Temp\testng-eclipse-375100204\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\asuriv.SQS\AppData\Local\Temp\testng-eclipse--657763193\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -144,11 +144,11 @@
 &lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Default suite&quot;&gt;
   &lt;test verbose=&quot;2&quot; name=&quot;Default test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;AutomationTrainingPrj1.gmailLogin.BookingTest&quot;&gt;
+      &lt;class name=&quot;AutomationTrainingPrj1.gmailLogin.gmailLoginTest&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;testSearch&quot;/&gt;
+          &lt;include name=&quot;invalidEmailExcel&quot;/&gt;
         &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- AutomationTrainingPrj1.gmailLogin.BookingTest --&gt;
+      &lt;/class&gt; &lt;!-- AutomationTrainingPrj1.gmailLogin.gmailLoginTest --&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -190,14 +190,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'testSearch')
-data.setCell(0, 2, 'AutomationTrainingPrj1.gmailLogin.BookingTest')
-data.setCell(0, 3, 61116);
+data.setCell(0, 1, 'invalidEmailExcel')
+data.setCell(0, 2, 'AutomationTrainingPrj1.gmailLogin.gmailLoginTest')
+data.setCell(0, 3, 19262);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 19 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -212,9 +212,24 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">0 ignored methods</span>
+            <span class="header-content">5 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">AutomationTrainingPrj1.gmailLogin.gmailLoginTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">validLogin</span>
+                <br/>
+                <span class="ignored-method-name">validLoginExcel</span>
+                <br/>
+                <span class="ignored-method-name">invalidPassword</span>
+                <br/>
+                <span class="ignored-method-name">validLoginToYahoo</span>
+                <br/>
+                <span class="ignored-method-name">invalidEmail</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-Default_suite" class="panel">
@@ -223,15 +238,19 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">AutomationTrainingPrj1.gmailLogin.BookingTest</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">AutomationTrainingPrj1.gmailLogin.gmailLoginTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">beforeMethod</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">testSearch</span>
-                <span class="method-start">7 ms</span>
+                <span class="method-name">invalidEmailExcel</span>
+                <span class="method-start">8 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethod</span>
+                <span class="method-start">19275 ms</span>
+              </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

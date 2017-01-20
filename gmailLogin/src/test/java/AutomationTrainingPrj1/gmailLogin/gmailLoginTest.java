@@ -7,11 +7,22 @@ import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.testng.annotations.AfterMethod;
+
+// apache poi related imports.
+import org.apache.poi.xssf.usermodel.*;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
@@ -127,7 +138,109 @@ public class gmailLoginTest {
 
 	  
   }  
+  @Test
+  public void validLoginExcel() {
+	  // Open excel file in read mode.
+	  // read username and save it.
+	  // read password and save it.
+	  // continue as in valid login test (function named 'f' in this file.
+	  File file =    new File("C:\\Users\\asuriv\\SQS-Training\\SeleniumProjects\\AutomationTrainingPrj1\\Credentials.xlsx");
+	  try{
+		  FileInputStream inputStream = new FileInputStream(file);
+		  XSSFWorkbook wb = new XSSFWorkbook(inputStream);
+		  XSSFSheet sheetWithCredentials = wb.getSheet("valid_credentials");
+		  String gmailLogin = sheetWithCredentials.getRow(0).getCell(0).getStringCellValue();
+		  String gmailPasswd = sheetWithCredentials.getRow(0).getCell(1).getStringCellValue();
+		  System.out.println("login email: " + gmailLogin);
+		  System.out.println("password: " + gmailPasswd);
+		  wb.close();
+		  File cd = new File("C:/Users/asuriv/SQS-Training/SeleniumTraining/chromedriver/chromedriver.exe");
+		  System.setProperty("webdriver.chrome.driver", cd.getAbsolutePath());
+	      // Create the Chrome driver object.
+	      WebDriver driver = new ChromeDriver();
+	      driver.get("http://mail.google.com");
+	      driver.manage().window().maximize(); // maximize window.
+	      // delete cookies (& clear cache?)
+	      driver.manage().deleteAllCookies();
+	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	      // get the email input text box.
+	      WebElement emailInput = driver.findElement(By.id("Email"));
+	      emailInput.sendKeys(gmailLogin);
+	      // grab the next button by ID
+	      WebElement nextButton = driver.findElement(By.id("next"));
+	      driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+	      nextButton.click();
+	      driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+	      WebElement passwordInput = driver.findElement(By.id("Passwd")); // 
+	      passwordInput.sendKeys(gmailPasswd);
+	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	      // grab the next button by ID
+	      WebElement signInBtn = driver.findElement(By.id("signIn"));
+	      driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+	      signInBtn.click();
+	      driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	      driver.close();
+	      driver.quit();
+	  }
+	  catch(FileNotFoundException fnfe){
+		  System.out.println("Excel file not found...");
+	  }
+	  catch(IOException ioe){
+		  System.out.println("IOException raised!");
+	  }
+	  
+	  
+  }  
   
+  @Test
+  public void invalidEmailExcel() {
+	  // Open excel file in read mode.
+	  // read username and save it.
+	  // read password and save it.
+	  // continue as in valid login test (function named 'f' in this file.
+	  File file =    new File("C:\\Users\\asuriv\\SQS-Training\\SeleniumProjects\\AutomationTrainingPrj1\\Credentials.xlsx");
+	  try{
+		  FileInputStream inputStream = new FileInputStream(file);
+		  XSSFWorkbook wb = new XSSFWorkbook(inputStream);
+		  XSSFSheet sheetWithCredentials = wb.getSheet("invalid_email");
+		  String gmailLogin = sheetWithCredentials.getRow(0).getCell(0).getStringCellValue();
+		  String gmailPasswd = sheetWithCredentials.getRow(0).getCell(1).getStringCellValue();
+		  System.out.println("login email: " + gmailLogin);
+		  System.out.println("password: " + gmailPasswd);
+		  wb.close();
+		  File cd = new File("C:/Users/asuriv/SQS-Training/SeleniumTraining/chromedriver/chromedriver.exe");
+		  System.setProperty("webdriver.chrome.driver", cd.getAbsolutePath());
+	      // Create the Chrome driver object.
+	      WebDriver driver = new ChromeDriver();
+	      driver.get("http://mail.google.com");
+	      // delete cookies (& clear cache?)
+	      driver.manage().deleteAllCookies();
+	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	      // get the email input text box.
+	      WebElement emailInput = driver.findElement(By.id("Email"));
+	      emailInput.sendKeys(gmailLogin); // enter email.
+	      // grab the next button by ID
+	      WebElement nextButton = driver.findElement(By.id("next"));
+	      nextButton.click();
+	      // Now expect an error message "Please enter a valid email address." to be displayed.
+	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	      WebElement errorMessage = driver.findElement(By.id("errormsg_0_Email")); 
+	      System.out.println("Error message " + errorMessage.getText());
+
+	      FileOutputStream fout=new FileOutputStream(file);
+	      
+	      driver.close();
+	      driver.quit();
+	  }
+	  catch(FileNotFoundException fnfe){
+		  System.out.println("Excel file not found...");
+	  }
+	  catch(IOException ioe){
+		  System.out.println("IOException raised!");
+	  }
+	  
+	  
+  }  
   
   @Test
   public void invalidEmail() {
@@ -159,7 +272,7 @@ public class gmailLoginTest {
   }
 	
   @Test
-  public void f() {
+  public void validLogin() {
 	  File file = new File("C:/Users/asuriv/SQS-Training/SeleniumTraining/chromedriver/chromedriver.exe");
 	  System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 

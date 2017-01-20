@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="5" total="6" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="61155" started-at="2017-01-20T17:33:27Z" finished-at="2017-01-20T17:34:28Z">
+  <suite name="Default suite" duration-ms="19298" started-at="2017-01-20T19:40:38Z" finished-at="2017-01-20T19:40:58Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="61155" started-at="2017-01-20T17:33:27Z" finished-at="2017-01-20T17:34:28Z">
-      <class name="AutomationTrainingPrj1.gmailLogin.BookingTest">
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:AutomationTrainingPrj1.gmailLogin.BookingTest@3daa422a]" name="beforeMethod" is-config="true" duration-ms="7" started-at="2017-01-20T12:33:27Z" finished-at="2017-01-20T12:33:27Z">
+    <test name="Default test" duration-ms="19298" started-at="2017-01-20T19:40:38Z" finished-at="2017-01-20T19:40:58Z">
+      <class name="AutomationTrainingPrj1.gmailLogin.gmailLoginTest">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:AutomationTrainingPrj1.gmailLogin.gmailLoginTest@41fbdac4]" name="beforeMethod" is-config="true" duration-ms="8" started-at="2017-01-20T14:40:38Z" finished-at="2017-01-20T14:40:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="testSearch()[pri:0, instance:AutomationTrainingPrj1.gmailLogin.BookingTest@3daa422a]" name="testSearch" duration-ms="61116" started-at="2017-01-20T12:33:27Z" finished-at="2017-01-20T12:34:28Z">
+        <test-method status="PASS" signature="invalidEmailExcel()[pri:0, instance:AutomationTrainingPrj1.gmailLogin.gmailLoginTest@41fbdac4]" name="invalidEmailExcel" duration-ms="19262" started-at="2017-01-20T14:40:38Z" finished-at="2017-01-20T14:40:58Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testSearch -->
-      </class> <!-- AutomationTrainingPrj1.gmailLogin.BookingTest -->
+        </test-method> <!-- invalidEmailExcel -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:AutomationTrainingPrj1.gmailLogin.gmailLoginTest@41fbdac4]" name="afterMethod" is-config="true" duration-ms="1" started-at="2017-01-20T14:40:58Z" finished-at="2017-01-20T14:40:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- AutomationTrainingPrj1.gmailLogin.gmailLoginTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
