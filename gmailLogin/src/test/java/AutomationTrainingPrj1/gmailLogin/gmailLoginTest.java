@@ -280,22 +280,13 @@ public class gmailLoginTest {
 
       // Create the Chrome driver object.
       WebDriver driver = new ChromeDriver();
-	  
-//	  File file = new File("C:/Users/asuriv/SQS-Training/SeleniumTraining/geckodriver/geckodriver.exe");
-//	  System.setProperty("webdriver.gecko.driver", file.getAbsolutePath());
-//
-//      WebDriver driver = new FirefoxDriver();
-
 
       // And use it to visit Google
       //driver.get("https://accounts.google.com/ServiceLogin?service=mail&continue=https://mail.google.com/mail/#identifier");
       driver.get("http://mail.google.com");
-      
-      //driver.manage().window().maximize(); // maximize window.
-      
+
       // delete cookies (& clear cache?)
       //driver.manage().deleteAllCookies();
-      //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
       // get the email input text box.
       WebElement emailInput = driver.findElement(By.id("Email"));
       emailInput.sendKeys("vid.auto.test@gmail.com");
@@ -303,37 +294,39 @@ public class gmailLoginTest {
       // grab the next button by ID
       WebElement nextButton = driver.findElement(By.id("next"));
       // http://toolsqa.com/selenium-webdriver/findelement-and-findelements-command/
-      //driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
       nextButton.click();
 	  WebDriverWait wait = new WebDriverWait(driver,10);
 	  WebElement passwordInput = wait.until(ExpectedConditions.elementToBeClickable(By.id("Passwd"))); 
-
-      
-      //driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-      //WebElement passwordInput = driver.findElement(By.id("Passwd")); // #Passwd password-shown
       passwordInput.sendKeys("piOctIj8");
       
       WebElement signinButton = driver.findElement(By.id("signIn"));
       signinButton.click();
       
-
-//	  WebDriverWait wait = new WebDriverWait(driver,10);
-//	  WebElement elem = wait.until(ExpectedConditions.elementToBeClickable(By.id("signIn"))); 
-
-  		
-      //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+      // z0
+	  WebDriverWait waitForCompose = new WebDriverWait(driver,10);
+	  WebElement composeBtn = waitForCompose.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='z0']/div[@class='T-I J-J5-Ji T-I-KE L3']"))); 
+      composeBtn.click();
       
-      // grab the next button by ID
-      //WebElement signInBtn = driver.findElement(By.id("signIn"));
-      //driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-      // http://toolsqa.com/selenium-webdriver/findelement-and-findelements-command/
-      //signInBtn.click();
-      //driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-      //driver.close();
-      //driver.quit();
-
+      // close the new message window.
+      // <img class="Ha" id=":69" src="images/cleardot.gif" alt="Close" aria-label="Save &amp; Close" data-tooltip-delay="800" data-tooltip="Save &amp; Close">
+      // find the x button.
+	  WebDriverWait waitForXBtn = new WebDriverWait(driver,3);
+	  WebElement xBtn = waitForXBtn.until(ExpectedConditions.elementToBeClickable(By.xpath("//img[@class='Ha']"))); 
+      
+      xBtn.click();
+      
+	  WebDriverWait waitSignOut = new WebDriverWait(driver,10);
+	  WebElement signOut = waitSignOut.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='gb_uc gb_hb gb_Ef gb_R']/a[@class='gb_b gb_db gb_R']"))); 
+	  driver.get(signOut.getAttribute("href"));
 	  
+	  WebDriverWait waitForSignOut = new WebDriverWait(driver,5);
+	  WebElement signOutBtn = waitForSignOut.until(ExpectedConditions.elementToBeClickable(By.id("signout"))); 
+	  signOutBtn.click();
+      
+      driver.close();
+      driver.quit();
   }
+
   @BeforeMethod
   public void beforeMethod() {
   }
