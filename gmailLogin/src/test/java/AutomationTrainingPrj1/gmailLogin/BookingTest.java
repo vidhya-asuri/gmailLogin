@@ -3,8 +3,6 @@ package AutomationTrainingPrj1.gmailLogin;
 import org.testng.annotations.Test;
 
 import java.awt.AWTException;
-//import java.awt.Robot;
-//import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -63,15 +61,28 @@ public class BookingTest {
           addToCart.click();
           System.out.println("Clicked on the add to cart button.");
           WebDriverWait waitChkOutBtn = new WebDriverWait(driver,5);
-          WebElement chkOutBtn = waitAddToCart.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='cart-buttons-right']/a[@class='check-link btn']")));
+          WebElement chkOutBtn = waitChkOutBtn.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='cart-buttons-right']/a[@class='check-link btn']")));
     	  chkOutBtn.click();
           System.out.println("Clicked on the check out button.");
+          // ctl00_content_receiptEmail
+          // enter email for receipt.
+          WebDriverWait waitForEmailInput = new WebDriverWait(driver,5);
+          WebElement emailReceipt = waitForEmailInput.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='customer-inner']/a[@class='ctl00_content_receiptEmail']")));
+          emailReceipt.sendKeys("vid.auto.test@gmail.com");
+          
+          // assume the check box for promotional emails is clickable at this point.
+          WebElement emailPromo = driver.findElement(By.xpath("//div[@id='ctl00_content_LatestNewsPanel']/input[@id='ctl00_content_chkLatestNews']"));
+          if(emailPromo.getAttribute("checked").equals("checked")){ // is promo email check box checked?
+        	  // uncheck the promo check box.
+        	  
+        	  
+          }
+
       }
       else{
     	  System.out.println("Sorry, no results were found");
     	  // this should be replaced with what actually happens on the site, when there are no 
     	  // results for a specific search.
-
       }
       driver.close();
       driver.quit();

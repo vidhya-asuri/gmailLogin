@@ -1,98 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="5" total="6" passed="0">
+<testng-results skipped="0" failed="0" ignored="5" total="6" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="43359" started-at="2017-01-20T19:50:39Z" finished-at="2017-01-20T19:51:22Z">
+  <suite name="Default suite" duration-ms="10079" started-at="2017-01-24T18:19:16Z" finished-at="2017-01-24T18:19:26Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="43359" started-at="2017-01-20T19:50:39Z" finished-at="2017-01-20T19:51:22Z">
+    <test name="Default test" duration-ms="10079" started-at="2017-01-24T18:19:16Z" finished-at="2017-01-24T18:19:26Z">
       <class name="AutomationTrainingPrj1.gmailLogin.gmailLoginTest">
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:AutomationTrainingPrj1.gmailLogin.gmailLoginTest@41fbdac4]" name="beforeMethod" is-config="true" duration-ms="12" started-at="2017-01-20T14:50:39Z" finished-at="2017-01-20T14:50:39Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:AutomationTrainingPrj1.gmailLogin.gmailLoginTest@f6c48ac]" name="beforeMethod" is-config="true" duration-ms="6" started-at="2017-01-24T13:19:16Z" finished-at="2017-01-24T13:19:16Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="FAIL" signature="invalidPassword()[pri:0, instance:AutomationTrainingPrj1.gmailLogin.gmailLoginTest@41fbdac4]" name="invalidPassword" duration-ms="31061" started-at="2017-01-20T14:50:39Z" finished-at="2017-01-20T14:51:10Z">
-          <exception class="org.openqa.selenium.TimeoutException">
-            <message>
-              <![CDATA[Expected condition failed: waiting for element to be clickable: By.xpath: //span[@id='errormsg_0_Passwd'] (tried for 10 second(s) with 500 MILLISECONDS interval)
-Build info: version: '3.0.1', revision: '1969d75', time: '2016-10-18 09:49:13 -0700'
-System info: host: 'NJN0SK22', ip: '172.20.96.56', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_112'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\asuriv.SQS\AppData\Local\Temp\scoped_dir9084_4807}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=55.0.2883.87, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
-Session ID: 0f8b37b104d53e95691ac234488f726f]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //span[@id='errormsg_0_Passwd'] (tried for 10 second(s) with 500 MILLISECONDS interval)
-Build info: version: '3.0.1', revision: '1969d75', time: '2016-10-18 09:49:13 -0700'
-System info: host: 'NJN0SK22', ip: '172.20.96.56', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_112'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\asuriv.SQS\AppData\Local\Temp\scoped_dir9084_4807}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=55.0.2883.87, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
-Session ID: 0f8b37b104d53e95691ac234488f726f
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:265)
-	at AutomationTrainingPrj1.gmailLogin.gmailLoginTest.invalidPassword(gmailLoginTest.java:69)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:104)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:645)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:851)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1177)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:756)
-	at org.testng.TestRunner.run(TestRunner.java:610)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:387)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:382)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1293)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1218)
-	at org.testng.TestNG.runSuites(TestNG.java:1133)
-	at org.testng.TestNG.run(TestNG.java:1104)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//span[@id='errormsg_0_Passwd']"}
-  (Session info: chrome=55.0.2883.87)
-  (Driver info: chromedriver=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9),platform=Windows NT 10.0.14393 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 2.06 seconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.0.1', revision: '1969d75', time: '2016-10-18 09:49:13 -0700'
-System info: host: 'NJN0SK22', ip: '172.20.96.56', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_112'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\asuriv.SQS\AppData\Local\Temp\scoped_dir9084_4807}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=55.0.2883.87, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
-Session ID: 0f8b37b104d53e95691ac234488f726f
-*** Element info: {Using=xpath, value=//span[@id='errormsg_0_Passwd']}
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:216)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:168)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:635)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:368)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:473)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:360)
-	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:895)
-	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:41)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
-	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:651)
-	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:644)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:238)
-	... 26 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
+        <test-method status="PASS" signature="validLogin()[pri:0, instance:AutomationTrainingPrj1.gmailLogin.gmailLoginTest@f6c48ac]" name="validLogin" duration-ms="10041" started-at="2017-01-24T13:19:16Z" finished-at="2017-01-24T13:19:26Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- invalidPassword -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:AutomationTrainingPrj1.gmailLogin.gmailLoginTest@41fbdac4]" name="afterMethod" is-config="true" duration-ms="1" started-at="2017-01-20T14:51:22Z" finished-at="2017-01-20T14:51:22Z">
+        </test-method> <!-- validLogin -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:AutomationTrainingPrj1.gmailLogin.gmailLoginTest@f6c48ac]" name="afterMethod" is-config="true" duration-ms="0" started-at="2017-01-24T13:19:26Z" finished-at="2017-01-24T13:19:26Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->

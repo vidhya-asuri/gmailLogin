@@ -5,8 +5,8 @@
     <classes>
       <class name="AutomationTrainingPrj1.gmailLogin.gmailLoginTest">
         <methods>
+          <include name="validLogin"/>
           <include name="afterMethod"/>
-          <include name="invalidPassword"/>
           <include name="beforeMethod"/>
         </methods>
       </class> <!-- AutomationTrainingPrj1.gmailLogin.gmailLoginTest -->

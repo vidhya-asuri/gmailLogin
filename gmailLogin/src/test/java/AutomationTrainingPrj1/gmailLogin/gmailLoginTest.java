@@ -294,32 +294,43 @@ public class gmailLoginTest {
       //driver.manage().window().maximize(); // maximize window.
       
       // delete cookies (& clear cache?)
-      driver.manage().deleteAllCookies();
-      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+      //driver.manage().deleteAllCookies();
+      //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
       // get the email input text box.
       WebElement emailInput = driver.findElement(By.id("Email"));
       emailInput.sendKeys("vid.auto.test@gmail.com");
       
-      
       // grab the next button by ID
       WebElement nextButton = driver.findElement(By.id("next"));
       // http://toolsqa.com/selenium-webdriver/findelement-and-findelements-command/
-      driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+      //driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
       nextButton.click();
-      driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-      WebElement passwordInput = driver.findElement(By.id("Passwd")); // #Passwd password-shown
-      passwordInput.sendKeys("piOctIj8");
+	  WebDriverWait wait = new WebDriverWait(driver,10);
+	  WebElement passwordInput = wait.until(ExpectedConditions.elementToBeClickable(By.id("Passwd"))); 
 
-      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+      
+      //driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+      //WebElement passwordInput = driver.findElement(By.id("Passwd")); // #Passwd password-shown
+      passwordInput.sendKeys("piOctIj8");
+      
+      WebElement signinButton = driver.findElement(By.id("signIn"));
+      signinButton.click();
+      
+
+//	  WebDriverWait wait = new WebDriverWait(driver,10);
+//	  WebElement elem = wait.until(ExpectedConditions.elementToBeClickable(By.id("signIn"))); 
+
+  		
+      //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
       
       // grab the next button by ID
-      WebElement signInBtn = driver.findElement(By.id("signIn"));
-      driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+      //WebElement signInBtn = driver.findElement(By.id("signIn"));
+      //driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
       // http://toolsqa.com/selenium-webdriver/findelement-and-findelements-command/
-      signInBtn.click();
-      driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-      driver.close();
-      driver.quit();
+      //signInBtn.click();
+      //driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+      //driver.close();
+      //driver.quit();
 
 	  
   }
