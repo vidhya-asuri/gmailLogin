@@ -22,6 +22,63 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
 
 public class BookingTest {
+
+  @Test
+  public void searchAndSelectProduct() {
+	  File file = new File("C:/Users/asuriv/SQS-Training/SeleniumTraining/chromedriver/chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+
+      // Create the Chrome driver object.
+      WebDriver driver = new ChromeDriver();
+      driver.get("http://marbles.shopvisible.com/");
+      
+      driver.manage().window().maximize(); // maximize window.
+      // enter destination in web element with id = ss
+      driver.manage().deleteAllCookies();
+      driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);  // 20 seconds to delete cookies
+      
+      WebDriverWait wait = new WebDriverWait(driver,20);
+      WebElement searchInput = wait.until(ExpectedConditions.elementToBeClickable(By.name("tSearch")));
+      WebElement popOverXBtn = driver.findElement(By.className("cl"));
+      
+      popOverXBtn.click();
+      
+      searchInput.sendKeys("scrabble");
+      searchInput.sendKeys(Keys.ENTER);
+      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);// give it 1 minute to finish loading results page.
+      List<Float> listOfPrices = new ArrayList<Float>();
+      
+      List<WebElement>  searchResults = driver.findElements(By.xpath("//div[@class='prod-list']/div[@class='prod-item']/a[@class='first-link']")); //@id='b1'
+      // searchResults is a list of web elements; specifically the 'a' tags.
+      System.out.println("Number of search results: " + searchResults.size());
+      
+      // click on the a tag for the first result.
+      if(searchResults.size() > 0){
+    	  // click the first 'a' tag.
+    	  WebElement aTag = searchResults.get(0);
+    	  driver.get(aTag.getAttribute("href"));
+    	  // wait till the page finishes loading.
+          WebDriverWait waitAddToCart = new WebDriverWait(driver, 10);
+          WebElement addToCart = waitAddToCart.until(ExpectedConditions.elementToBeClickable(By.id("addToCart")));
+          addToCart.click();
+          System.out.println("Clicked on the add to cart button.");
+          WebDriverWait waitChkOutBtn = new WebDriverWait(driver,5);
+          WebElement chkOutBtn = waitAddToCart.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='cart-buttons-right']/a[@class='check-link btn']")));
+    	  chkOutBtn.click();
+          System.out.println("Clicked on the check out button.");
+      }
+      else{
+    	  System.out.println("Sorry, no results were found");
+    	  // this should be replaced with what actually happens on the site, when there are no 
+    	  // results for a specific search.
+
+      }
+      driver.close();
+      driver.quit();
+      
+  }
+  
+	  
   @Test
   public void testSearch() throws AWTException {
 	  File file = new File("C:/Users/asuriv/SQS-Training/SeleniumTraining/chromedriver/chromedriver.exe");

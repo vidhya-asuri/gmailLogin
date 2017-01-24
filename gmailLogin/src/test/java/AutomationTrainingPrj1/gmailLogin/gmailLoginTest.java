@@ -74,6 +74,9 @@ public class gmailLoginTest {
       driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
       // http://toolsqa.com/selenium-webdriver/findelement-and-findelements-command/
       signInBtn.click();
+      
+//      WebElement error = driver.findElement(By.xpath("//span[@id='errormsg_0_Passwd']"));
+//      System.out.println(error.getText());
       // verify there is an error message since an incorrect password was entered.
       // xpath for the error message span element. //*[@id="errormsg_0_Passwd"]
       WebDriverWait wait = new WebDriverWait(driver, 10);
