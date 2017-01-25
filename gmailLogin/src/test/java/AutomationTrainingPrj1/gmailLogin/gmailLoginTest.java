@@ -329,7 +329,7 @@ public class gmailLoginTest {
 	  
       // xBtn.click(); // commenting out the closing of the compose window since i'm trying to send an email.
 
-	  WebElement signOutPopUp = driver.findElement(By.xpath("//a[@class='gb_b gb_eb gb_R']"));
+	  WebElement signOutPopUp = driver.findElement(By.xpath("//a[contains(@title,'Google Account')]"));
 	  signOutPopUp.click();
 	  WebDriverWait waitForSignOutBtn = new WebDriverWait(driver,3);
 	  WebElement signOutBtn = waitForSignOutBtn.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='gb_71']"))); 

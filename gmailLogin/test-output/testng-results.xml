@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="5" total="6" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="38601" started-at="2017-01-25T19:03:01Z" finished-at="2017-01-25T19:03:39Z">
+  <suite name="Default suite" duration-ms="39503" started-at="2017-01-25T19:49:01Z" finished-at="2017-01-25T19:49:41Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="38601" started-at="2017-01-25T19:03:01Z" finished-at="2017-01-25T19:03:39Z">
+    <test name="Default test" duration-ms="39503" started-at="2017-01-25T19:49:01Z" finished-at="2017-01-25T19:49:41Z">
       <class name="AutomationTrainingPrj1.gmailLogin.gmailLoginTest">
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:AutomationTrainingPrj1.gmailLogin.gmailLoginTest@41fbdac4]" name="beforeMethod" is-config="true" duration-ms="12" started-at="2017-01-25T14:03:01Z" finished-at="2017-01-25T14:03:01Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:AutomationTrainingPrj1.gmailLogin.gmailLoginTest@41fbdac4]" name="beforeMethod" is-config="true" duration-ms="11" started-at="2017-01-25T14:49:01Z" finished-at="2017-01-25T14:49:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="validLogin()[pri:0, instance:AutomationTrainingPrj1.gmailLogin.gmailLoginTest@41fbdac4]" name="validLogin" duration-ms="38556" started-at="2017-01-25T14:03:01Z" finished-at="2017-01-25T14:03:39Z">
+        <test-method status="PASS" signature="validLogin()[pri:0, instance:AutomationTrainingPrj1.gmailLogin.gmailLoginTest@41fbdac4]" name="validLogin" duration-ms="39451" started-at="2017-01-25T14:49:01Z" finished-at="2017-01-25T14:49:41Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validLogin -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:AutomationTrainingPrj1.gmailLogin.gmailLoginTest@41fbdac4]" name="afterMethod" is-config="true" duration-ms="1" started-at="2017-01-25T14:03:39Z" finished-at="2017-01-25T14:03:39Z">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:AutomationTrainingPrj1.gmailLogin.gmailLoginTest@41fbdac4]" name="afterMethod" is-config="true" duration-ms="1" started-at="2017-01-25T14:49:41Z" finished-at="2017-01-25T14:49:41Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
