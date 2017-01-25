@@ -324,7 +324,8 @@ public class gmailLoginTest {
 	  subjectInput.sendKeys("Assignment 4 - Vidhya.");
 	  
 	  // find the send button - id = :8v ?
-	  WebElement sendBtn = driver.findElement(By.xpath("//td[@class='gU Up']/child::div[position()=1]"));
+//	  WebElement sendBtn = driver.findElement(By.xpath("//td[@class='gU Up']/child::div[position()=1]"));
+	  WebElement sendBtn = driver.findElement(By.xpath("//div[contains(text(),'Send')]"));
 	  sendBtn.click();
 	  
       // xBtn.click(); // commenting out the closing of the compose window since i'm trying to send an email.
