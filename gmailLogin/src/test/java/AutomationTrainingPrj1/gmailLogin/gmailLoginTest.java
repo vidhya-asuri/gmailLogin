@@ -312,15 +312,27 @@ public class gmailLoginTest {
       // find the x button.
 	  WebDriverWait waitForXBtn = new WebDriverWait(driver,3);
 	  WebElement xBtn = waitForXBtn.until(ExpectedConditions.elementToBeClickable(By.xpath("//img[@class='Ha']"))); 
-      
-      xBtn.click();
-      
-	  WebDriverWait waitSignOut = new WebDriverWait(driver,10);
-	  WebElement signOut = waitSignOut.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='gb_uc gb_hb gb_Ef gb_R']/a[@class='gb_b gb_db gb_R']"))); 
-	  driver.get(signOut.getAttribute("href"));
+ 
+	  // compose window is open.
+	  WebDriverWait waitForToField = new WebDriverWait(driver,3);
+	  WebElement toField = waitForToField.until(ExpectedConditions.elementToBeClickable(By.xpath("//textarea[@class='vO']"))); 
+
+//	  WebElement toField = driver.findElement(By.xpath("//div[@class='oL aDm']"));
+	  toField.sendKeys("vid.auto.test@gmail.com");
+	  // enter something in the subject input. input element with name = subjectbox
+	  WebElement subjectInput = driver.findElement(By.xpath("//input[@name='subjectbox']"));
+	  subjectInput.sendKeys("Assignment 4 - Vidhya.");
 	  
-	  WebDriverWait waitForSignOut = new WebDriverWait(driver,5);
-	  WebElement signOutBtn = waitForSignOut.until(ExpectedConditions.elementToBeClickable(By.id("signout"))); 
+	  // find the send button - id = :8v ?
+	  WebElement sendBtn = driver.findElement(By.xpath("//td[@class='gU Up']/child::div[position()=1]"));
+	  sendBtn.click();
+	  
+      // xBtn.click(); // commenting out the closing of the compose window since i'm trying to send an email.
+
+	  WebElement signOutPopUp = driver.findElement(By.xpath("//a[@class='gb_b gb_eb gb_R']"));
+	  signOutPopUp.click();
+	  WebDriverWait waitForSignOutBtn = new WebDriverWait(driver,3);
+	  WebElement signOutBtn = waitForSignOutBtn.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='gb_71']"))); 
 	  signOutBtn.click();
       
       driver.close();
