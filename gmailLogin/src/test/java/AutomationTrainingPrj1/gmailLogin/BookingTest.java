@@ -14,6 +14,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select; // for working with drop downs
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -66,18 +67,50 @@ public class BookingTest {
           System.out.println("Clicked on the check out button.");
           // ctl00_content_receiptEmail
           // enter email for receipt.
-          WebDriverWait waitForEmailInput = new WebDriverWait(driver,5);
-          WebElement emailReceipt = waitForEmailInput.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='customer-inner']/a[@class='ctl00_content_receiptEmail']")));
+          WebDriverWait waitForEmailInput = new WebDriverWait(driver,10);
+//          WebElement emailReceipt = waitForEmailInput.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='customer-inner']/a[@class='ctl00_content_receiptEmail']")));
+          // ctl00_content_receiptEmail
+          WebElement emailReceipt = waitForEmailInput.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='ctl00_content_receiptEmail']")));
+          
           emailReceipt.sendKeys("vid.auto.test@gmail.com");
           
           // assume the check box for promotional emails is clickable at this point.
           WebElement emailPromo = driver.findElement(By.xpath("//div[@id='ctl00_content_LatestNewsPanel']/input[@id='ctl00_content_chkLatestNews']"));
-          if(emailPromo.getAttribute("checked").equals("checked")){ // is promo email check box checked?
+          if(emailPromo.getAttribute("checked").equals("true")){ // is promo email check box checked?
         	  // uncheck the promo check box.
-        	  
-        	  
+        	  System.out.println("email promo check box is - " + emailPromo.getAttribute("checked"));
+        	  emailPromo.click();
           }
-
+          // click on the 'continue as guest' button - ctl00_content_btnCustomerGuest
+          WebElement continueAsGuest = driver.findElement(By.xpath("//input[@id='ctl00_content_btnCustomerGuest']"));
+          continueAsGuest.click();
+          // Fill in name and address details.
+          // ctl00_content_lblShippingFirstName, ctl00_content_shippingLastName
+          WebDriverWait waitForFirstNameInput = new WebDriverWait(driver,10); // wait for 10 secs for the name+address form show up and be editable.
+          WebElement firstNameInput = waitForFirstNameInput.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='ctl00_content_shippingFirstName']")));
+          firstNameInput.sendKeys("SQS USA");
+          WebElement lastNameInput = driver.findElement(By.id("ctl00_content_shippingLastName"));
+          lastNameInput.sendKeys("Tester");
+          WebElement addressLine1 = driver.findElement(By.id("ctl00_content_shippingAddress1"));
+          addressLine1.sendKeys("Tester lane");
+          WebElement zipcode = driver.findElement(By.id("ctl00_content_shippingZip"));
+          zipcode.sendKeys("40504");
+          driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+//          WebElement city = driver.findElement(By.id("ctl00_content_shippingCity"));
+//          city.clear();
+//          city.sendKeys("Lexington");
+//          Select country = new Select(driver.findElement(By.id("ctl00_content_shippingCountry")));
+//          country.selectByValue("USA");
+//          Select state = new Select(driver.findElement(By.id("ctl00_content_shippingState")));
+//          state.deselectAll();
+//          state.selectByValue("Kentucky");
+          
+          WebElement phone = driver.findElement(By.id("ctl00_content_shippingPhone"));
+          phone.sendKeys("555-555-1234");
+          // click on the continue button
+          WebDriverWait waitForContinueBtn = new WebDriverWait(driver,5);
+          WebElement continueBtn = waitForContinueBtn.until(ExpectedConditions.elementToBeClickable(By.id("ctl00_content_btnShippingContinue")));
+          continueBtn.click();
       }
       else{
     	  System.out.println("Sorry, no results were found");
@@ -86,7 +119,6 @@ public class BookingTest {
       }
       driver.close();
       driver.quit();
-      
   }
   
 	  
