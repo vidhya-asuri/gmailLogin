@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.time.LocalDateTime;
 
 import org.testng.annotations.AfterMethod;
 
@@ -55,31 +56,26 @@ public class gmailLoginTest {
       WebDriver driver = new ChromeDriver();
       driver.get("http://mail.google.com");
       // delete cookies (& clear cache?)
-      driver.manage().deleteAllCookies();
+      //driver.manage().deleteAllCookies();
       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
       // get the email input text box.
       WebElement emailInput = driver.findElement(By.id("Email"));
       emailInput.sendKeys("vid.auto.test@gmail.com"); // enter email.
-      // http://toolsqa.com/selenium-webdriver/findelement-and-findelements-command/
+
       driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
       // grab the next button by ID
       WebElement nextButton = driver.findElement(By.id("next"));
       nextButton.click();
       driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-      WebElement passwordInput = driver.findElement(By.id("Passwd")); // #Passwd password-shown
+      WebElement passwordInput = driver.findElement(By.id("Passwd")); 
       passwordInput.sendKeys("piOctI$*"); // enter incorrect password.
-      driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
       // grab the sign-in button by ID
       WebElement signInBtn = driver.findElement(By.id("signIn"));
-      driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-      // http://toolsqa.com/selenium-webdriver/findelement-and-findelements-command/
       signInBtn.click();
       
-//      WebElement error = driver.findElement(By.xpath("//span[@id='errormsg_0_Passwd']"));
-//      System.out.println(error.getText());
       // verify there is an error message since an incorrect password was entered.
-      // xpath for the error message span element. //*[@id="errormsg_0_Passwd"]
-      WebDriverWait wait = new WebDriverWait(driver, 10);
+      WebDriverWait wait = new WebDriverWait(driver, 5);
       WebElement errorAlert = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@id='errormsg_0_Passwd']")));
       System.out.println(errorAlert.getText());
       driver.close();
@@ -156,6 +152,7 @@ public class gmailLoginTest {
 		  System.out.println("login email: " + gmailLogin);
 		  System.out.println("password: " + gmailPasswd);
 		  wb.close();
+		  inputStream.close();
 		  File cd = new File("C:/Users/asuriv/SQS-Training/SeleniumTraining/chromedriver/chromedriver.exe");
 		  System.setProperty("webdriver.chrome.driver", cd.getAbsolutePath());
 	      // Create the Chrome driver object.
@@ -163,7 +160,7 @@ public class gmailLoginTest {
 	      driver.get("http://mail.google.com");
 	      driver.manage().window().maximize(); // maximize window.
 	      // delete cookies (& clear cache?)
-	      driver.manage().deleteAllCookies();
+	      //driver.manage().deleteAllCookies();
 	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	      // get the email input text box.
 	      WebElement emailInput = driver.findElement(By.id("Email"));
@@ -178,7 +175,7 @@ public class gmailLoginTest {
 	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	      // grab the next button by ID
 	      WebElement signInBtn = driver.findElement(By.id("signIn"));
-	      driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+//	      driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 	      signInBtn.click();
 	      driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	      driver.close();
@@ -199,7 +196,9 @@ public class gmailLoginTest {
 	  // Open excel file in read mode.
 	  // read username and save it.
 	  // read password and save it.
-	  // continue as in valid login test (function named 'f' in this file.
+	  // continue as in valid login test.
+	  // Guide to working with apache-poi: http://poi.apache.org/spreadsheet/quick-guide.html 
+	  
 	  File file =    new File("C:\\Users\\asuriv\\SQS-Training\\SeleniumProjects\\AutomationTrainingPrj1\\Credentials.xlsx");
 	  try{
 		  FileInputStream inputStream = new FileInputStream(file);
@@ -210,13 +209,14 @@ public class gmailLoginTest {
 		  System.out.println("login email: " + gmailLogin);
 		  System.out.println("password: " + gmailPasswd);
 		  wb.close();
+		  inputStream.close();
 		  File cd = new File("C:/Users/asuriv/SQS-Training/SeleniumTraining/chromedriver/chromedriver.exe");
 		  System.setProperty("webdriver.chrome.driver", cd.getAbsolutePath());
 	      // Create the Chrome driver object.
 	      WebDriver driver = new ChromeDriver();
 	      driver.get("http://mail.google.com");
 	      // delete cookies (& clear cache?)
-	      driver.manage().deleteAllCookies();
+	      //driver.manage().deleteAllCookies();
 	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	      // get the email input text box.
 	      WebElement emailInput = driver.findElement(By.id("Email"));
@@ -228,9 +228,6 @@ public class gmailLoginTest {
 	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	      WebElement errorMessage = driver.findElement(By.id("errormsg_0_Email")); 
 	      System.out.println("Error message " + errorMessage.getText());
-
-	      FileOutputStream fout=new FileOutputStream(file);
-	      
 	      driver.close();
 	      driver.quit();
 	  }
@@ -240,9 +237,66 @@ public class gmailLoginTest {
 	  catch(IOException ioe){
 		  System.out.println("IOException raised!");
 	  }
-	  
-	  
   }  
+
+  
+  @Test
+  public void invalidPasswdExcel() {
+	  // Open excel file in read mode.
+	  // read username and save it.
+	  // read password and save it.
+	  // continue as in valid login test.
+	  // http://poi.apache.org/spreadsheet/quick-guide.html 
+	  File file =    new File("C:\\Users\\asuriv\\SQS-Training\\SeleniumProjects\\AutomationTrainingPrj1\\Credentials.xlsx");
+	  try{
+		  FileInputStream inputStream = new FileInputStream(file);
+		  XSSFWorkbook wb = new XSSFWorkbook(inputStream);
+		  XSSFSheet sheetWithCredentials = wb.getSheet("invalid_passwd");
+		  String gmailLogin = sheetWithCredentials.getRow(0).getCell(0).getStringCellValue();
+		  String gmailPasswd = sheetWithCredentials.getRow(0).getCell(1).getStringCellValue();
+		  System.out.println("login email: " + gmailLogin);
+		  System.out.println("password: " + gmailPasswd);
+		  wb.close();
+		  inputStream.close();
+		  File cd = new File("C:/Users/asuriv/SQS-Training/SeleniumTraining/chromedriver/chromedriver.exe");
+		  System.setProperty("webdriver.chrome.driver", cd.getAbsolutePath());
+	      // Create the Chrome driver object.
+	      WebDriver driver = new ChromeDriver();
+	      driver.get("http://mail.google.com");
+	      // delete cookies (& clear cache?)
+	      //driver.manage().deleteAllCookies();
+	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	      // get the email input text box.
+	      WebElement emailInput = driver.findElement(By.id("Email"));
+	      emailInput.sendKeys(gmailLogin); // enter email.
+	      // grab the next button by ID
+	      WebElement nextButton = driver.findElement(By.id("next"));
+	      nextButton.click();
+	      // Now expect an error message "Please enter a valid email address." to be displayed.
+	      
+	      driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	      WebElement passwordInput = driver.findElement(By.id("Passwd")); 
+	      passwordInput.sendKeys(gmailPasswd); // enter incorrect password.
+
+	      // grab the sign-in button by ID
+	      WebElement signInBtn = driver.findElement(By.id("signIn"));
+	      signInBtn.click();
+	      
+	      // verify there is an error message since an incorrect password was entered.
+	      WebDriverWait wait = new WebDriverWait(driver, 5);
+	      WebElement errorAlert = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@id='errormsg_0_Passwd']")));
+	      System.out.println(errorAlert.getText());
+	      driver.close();
+	      driver.quit();
+	  }
+	  catch(FileNotFoundException fnfe){
+		  System.out.println("Excel file not found...");
+	  }
+	  catch(IOException ioe){
+		  System.out.println("IOException raised!");
+	  }
+  }  
+
   
   @Test
   public void invalidEmail() {
@@ -253,7 +307,7 @@ public class gmailLoginTest {
       WebDriver driver = new ChromeDriver();
       driver.get("http://mail.google.com");
       // delete cookies (& clear cache?)
-      driver.manage().deleteAllCookies();
+      //driver.manage().deleteAllCookies();
       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
       // get the email input text box.
       WebElement emailInput = driver.findElement(By.id("Email"));
@@ -264,12 +318,11 @@ public class gmailLoginTest {
       nextButton.click();
       
       // Now expect an error message "Please enter a valid email address." to be displayed.
-      WebElement errorMessage = driver.findElement(By.id("errormsg_0_Email")); 
-
+	  WebDriverWait waitForErrorMsg = new WebDriverWait(driver,3);
+	  WebElement errorMessage = waitForErrorMsg.until(ExpectedConditions.elementToBeClickable(By.id("errormsg_0_Email"))); 
       System.out.println("Error message " + errorMessage.getText());
       driver.close();
       driver.quit();
-
       
   }
 	
@@ -317,12 +370,19 @@ public class gmailLoginTest {
 	  toField.sendKeys("vid.auto.test@gmail.com");
 	  // enter something in the subject input. input element with name = subjectbox
 	  WebElement subjectInput = driver.findElement(By.xpath("//input[@name='subjectbox']"));
-	  subjectInput.sendKeys("Assignment 4 - Vidhya.");
+	  // Documentation for Time related classes: https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html
+	  String currentTimeInSubject = LocalDateTime.now().toString();
+	  subjectInput.sendKeys("Assignment 4 - Vidhya. Time: " + currentTimeInSubject);
 	  
-	  // find the send button - id = :8v ?
-
 	  WebElement sendBtn = driver.findElement(By.xpath("//div[contains(text(),'Send')]"));
 	  sendBtn.click();
+	  
+	  // verify the email has been sent.
+	  // Check for the presence of this text to verify that the message was sent: Your message has been sent.
+	  WebDriverWait waitForSentMailSuccess = new WebDriverWait(driver,3);
+	  WebElement sentMailSuccess = waitForSentMailSuccess.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(),'Your message has been sent')]"))); 
+	  boolean popUpPresent = sentMailSuccess.isDisplayed();
+	  System.out.println("Is the sent mail pop up present? -- " + popUpPresent);
 	  
       // xBtn.click(); // commenting out the closing of the compose window since i'm trying to send an email.
 	  WebElement signOutPopUp = driver.findElement(By.xpath("//a[contains(@title,'Google Account')]"));
